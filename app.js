@@ -1,4 +1,5 @@
-import { createClient } from 'https://esm.sh';
+import { createClient } from './supabase.js';
+
 
 // 1. Initialisation de Supabase
 const SUPABASE_URL = "https://vdmktszqkkabrmvokbbz.supabase.co";

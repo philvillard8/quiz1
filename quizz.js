@@ -1,4 +1,5 @@
-import { createClient } from 'https://esm.sh';
+import { createClient } from './supabase.js';
+
 
 // Sécurité : blocage si l'élève n'est pas passé par la page de connexion
 const username = localStorage.getItem('user_session');
