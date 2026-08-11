@@ -1,4 +1,4 @@
-import { createClient } from './supabase.js';
+
 
 
 // Sécurité : blocage si l'élève n'est pas passé par la page de connexion
@@ -10,6 +10,8 @@ if (!username) {
     const userElement = document.getElementById('currentUser');
     if (userElement) userElement.textContent = username;
 }
+
+const { createClient } = window.supabase;
 
 // Configuration identique des clés Supabase
 const SUPABASE_URL = "https://vdmktszqkkabrmvokbbz.supabase.co";

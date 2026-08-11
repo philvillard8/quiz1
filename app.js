@@ -1,4 +1,4 @@
-import { createClient } from './supabase.js';
+const { createClient } = window.supabase;
 
 
 // 1. Initialisation de Supabase
