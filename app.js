@@ -4,7 +4,8 @@ const { createClient } = window.supabase;
 // 1. Initialisation de Supabase
 const SUPABASE_URL = "https://vdmktszqkkabrmvokbbz.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkbWt0c3pxa2thYnJtdm9rYmJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY0NTYzMjcsImV4cCI6MjEwMjAzMjMyN30.VtAm6re1aC_xT2fy5PMg3hCtwgGzZFL-HboEECSZVC0";
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     try {
         // Appel direct de votre fonction SQL stockée dans Supabase
-        const { data: estValide, error } = await supabase.rpc('verifier_utilisateur', { 
+        const { data: estValide, error } = await supabaseClient.rpc('verifier_utilisateur', { 
             username_saisi: usernameInput, 
             mdp_saisi: passwordInput 
         });
