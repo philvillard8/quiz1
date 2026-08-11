@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion Éléves</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        input { width: 95%; padding: 8px; margin: 10px 0 20px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; background: #007bff; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 4px; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        #message { font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h2>Connexion au QCM</h2>
+    <form id="loginForm">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" required>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Se connecter</button>
+    </form>
+    <p id="message"></p>
+
+    <!-- Chargement logique de la connexion en mode module -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
+

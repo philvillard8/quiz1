@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>QCM Pythagore</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chargement sécurisé de Supabase via cdnjs (évite l'erreur MIME) -->
+    <script src="supabase.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 20px; line-height: 1.6; }
+        .question { background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 5px solid #007bff; border-radius: 4px; transition: background 0.3s; }
+        .question p { font-weight: bold; margin-top: 0; }
+        button { background: #28a745; color: white; border: none; padding: 12px 20px; font-size: 16px; cursor: pointer; border-radius: 4px; }
+        button:hover { background: #218838; }
+        button:disabled { background: #6c757d; cursor: not-allowed; }
+        #message { font-weight: bold; margin-top: 15px; font-size: 18px; }
+        
+        .question.correct { background: #e2f0d9; border-left-color: #28a745; }
+        .question.incorrect { background: #fce4d6; border-left-color: #dc3545; }
+        .statut-reponse { font-weight: bold; margin-top: 8px; display: block; }
+        #countdown { font-family: sans-serif; font-weight: normal; font-style: italic; color: #666; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Évaluation : Pythagore et sa réciproque</h2>
+    <p>Connecté en tant que : <span id="currentUser" style="font-weight:bold; color:#007bff;">...</span></p>
+    
+    <div id="quizContainer">
+        <div class="question" data-q="q1" data-correct="A">
+            <p>1. Dans un triangle ABC rectangle en A, quelle est l'égalité correcte ?</p>
+            <label><input type="radio" name="q1" value="A"> BC² = AB² + AC²</label><br>
+            <label><input type="radio" name="q1" value="B"> AB² = AC² + BC²</label><br>
+            <label><input type="radio" name="q1" value="C"> AC² = AB² + BC²</label>
+        </div>
+
+        <div class="question" data-q="q2" data-correct="B">
+            <p>2. Si un triangle a des côtés de longueurs 3 cm, 4 cm et 5 cm, est-il rectangle ?</p>
+            <label><input type="radio" name="q2" value="A"> Non</label><br>
+            <label><input type="radio" name="q2" value="B"> Oui, d'après la réciproque du théorème</label><br>
+            <label><input type="radio" name="q2" value="C"> On ne peut pas savoir</label>
+        </div>
+
+        <div class="question" data-q="q3" data-correct="B">
+            <p>3. Dans un triangle rectangle, comment appelle-t-on le côté opposé à l'angle droit ?</p>
+            <label><input type="radio" name="q3" value="A"> Le côté adjacent</label><br>
+            <label><input type="radio" name="q3" value="B"> L'hypoténuse</label><br>
+            <label><input type="radio" name="q3" value="C"> La hauteur</label>
+        </div>
+
+        <div class="question" data-q="q4" data-correct="A">
+            <p>4. ABC est rectangle en B avec AB = 6 cm et BC = 8 cm. Combien mesure AC ?</p>
+            <label><input type="radio" name="q4" value="A"> 10 cm</label><br>
+            <label><input type="radio" name="q4" value="B"> 14 cm</label><br>
+            <label><input type="radio" name="q4" value="C"> Racine de 14 cm</label>
+        </div>
+
+        <div class="question" data-q="q5" data-correct="C">
+            <p>5. Si dans un triangle EFG, EF² + EG² n'est pas égal à FG², que peut-on en déduire ?</p>
+            <label><input type="radio" name="q5" value="A"> Le triangle est rectangle en E</label><br>
+            <label><input type="radio" name="q5" value="B"> Le triangle est isocèle</label><br>
+            <label><input type="radio" name="q5" value="C"> Le triangle n'est pas rectangle en E (par la contraposée)</label>
+        </div>
+
+        <div class="question" data-q="q6" data-correct="A">
+            <p>6. Un triangle RST est rectangle en R. Si ST = 13 cm et RS = 5 cm, combien mesure RT ?</p>
+            <label><input type="radio" name="q6" value="A"> 12 cm</label><br>
+            <label><input type="radio" name="q6" value="B"> 18 cm</label><br>
+            <label><input type="radio" name="q6" value="C"> Racine de 194 cm</label>
+        </div>
+
+        <div class="question" data-q="q7" data-correct="C">
+            <p>7. La réciproque du théorème de Pythagore sert à :</p>
+            <label><input type="radio" name="q7" value="A"> Calculer une longueur manquante</label><br>
+            <label><input type="radio" name="q7" value="B"> Calculer un angle</label><br>
+            <label><input type="radio" name="q7" value="C"> Prouver qu'un triangle est rectangle</label>
+        </div>
+
+        <div class="question" data-q="q8" data-correct="B">
+            <p>8. Si les côtés d'un triangle mesurent 5 cm, 12 cm et 13 cm, où se situe l'angle droit ?</p>
+            <label><input type="radio" name="q8" value="A"> Opposé au côté de 5 cm</label><br>
+            <label><input type="radio" name="q8" value="B"> Opposé au côté de 13 cm</label><br>
+            <label><input type="radio" name="q8" value="C"> Opposé au côté de 12 cm</label>
+        </div>
+
+        <div class="question" data-q="q9" data-correct="A">
+            <p>9. Peut-on appliquer le théorème de Pythagore dans un triangle équilatéral ?</p>
+            <label><input type="radio" name="q9" value="A"> Non, sauf si on trace une hauteur pour créer un angle droit</label><br>
+            <label><input type="radio" name="q9" value="B"> Oui, directement sur ses côtés</label><br>
+            <label><input type="radio" name="q9" value="C"> Uniquement s'il est très grand</label>
+        </div>
+
+        <div class="question" data-q="q10" data-correct="C">
+            <p>10. Un triangle a pour côtés 4 cm, 7 cm et 8 cm. Est-il rectangle ?</p>
+            <label><input type="radio" name="q10" value="A"> Oui, car 16 + 49 = 65</label><br>
+            <label><input type="radio" name="q10" value="B"> Oui, car 8² = 64</label><br>
+            <label><input type="radio" name="q10" value="C"> Non, car 4² + 7² est différent de 8² (65 n'est pas égal à 64)</label>
+        </div>
+
+        <button id="btnTerminer">Fin de questionnaire</button>
+    </div>
+
+    <p id="message"></p>
+
+    <!-- On lie le script JS externe commun en mode module -->
+    <script type="module" src="quiz.js"></script>
+
+</body>
+</html>
+
+
+

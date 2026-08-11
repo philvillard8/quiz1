@@ -1,0 +1,14 @@
+body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 20px; line-height: 1.6; }
+.question { background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 5px solid #007bff; border-radius: 4px; transition: background 0.3s; }
+.question p { font-weight: bold; margin-top: 0; }
+button { background: #28a745; color: white; border: none; padding: 12px 20px; font-size: 16px; cursor: pointer; border-radius: 4px; }
+button:hover { background: #218838; }
+button:disabled { background: #6c757d; cursor: not-allowed; }
+#message { font-weight: bold; margin-top: 15px; font-size: 18px; }
+
+/* Styles pour la correction automatique */
+.question.correct { background: #e2f0d9; border-left-color: #28a745; }
+.question.incorrect { background: #fce4d6; border-left-color: #dc3545; }
+.statut-reponse { font-weight: bold; margin-top: 8px; display: block; }
+#countdown { font-family: sans-serif; font-weight: normal; font-style: italic; color: #666; display: block; margin-top: 10px; }
+
